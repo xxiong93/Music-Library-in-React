@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
-import MusicList from "./MusicList";
+import MusicList, {MusicTable} from "./MusicList";
+
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
           </a>
         </header>
         <MusicList/>
+        <MusicTable/>
       </div>
     );
   }
