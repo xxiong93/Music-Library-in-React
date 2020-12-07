@@ -2,39 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 
-export class MusicTable extends React.Component{
-    render() {
-        return(
-            <table>
-                <thead>
-                <tr>Music id</tr>
-                
-                </thead>    
-
-            </table>
-
-        );
-
-    }
-
-
-}
-function allMusic(music){
-    // want to return
-    // need to use array functions like filter(), 
-    // print one song on a row first***
-    // need a row for each song using map() 
-    let song = {};
-    
-    
-    for(let i = 0; i < music.length; i++){
-        song += music[i];
-        console.log(song);
-    }
-    return song;
-}
-
-export default class MusicList extends React.Component{
+export default class MusicList extends React.Component {
 
     state = {
         music: [],
@@ -47,18 +15,47 @@ export default class MusicList extends React.Component{
             .then(res => {
                 const music = res.data;
                 this.setState({ music });
-                this.setState({loading: false})
+                this.setState({ loading: false })
                 console.log(this.state.music);
+                // this.allMusic();
+            })
 
-            });
     }
+
+
+    // allMusic() {
+    //     // want to return
+    //     // need to use array functions like filter(), 
+    //     // print one song on a row first***
+    //     // need a row for each song using map() 
+    //     let song = {};
+
+    //     for (let i = 0; i < this.state.music.length; i++) {
+    //         song = this.state.music[i];
+    //         console.log(song);
+    //     }
+    //     return song;
+    // }
+
     render() {
+        // const contents = ;
+        // console.log(music);
         return (
             <div>
-                <table></table>
-                {this.state.music.title}
-                <button onClick={allMusic()}>Show music</button>
+                <tbody class="table-body">
+                    <tr>
+                        {this.state.music.map((musicItem, index) => {
+                            return (
+                                <td>{this.musicItem.album}</td>
+                                <td>{this.musicItem.artist}</td>
+                                <td>{this.musicItem.title}</td>
+                                <td>{this.musicItem.releaseDate}</td>
+                                <td>{this.musicItem.genre}</td>
+                            )
+                        })}
+                    </tr>
+                </tbody>
             </div>
-        );
+        )
     }
 }
